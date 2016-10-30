@@ -9,7 +9,8 @@
 ##      set with the average of each variable for each activity & each subject.
 
 ## set working directory
-setwd("~/Rworkspace/Course_3/Peer assignment")
+##setwd("~/Rworkspace/Course_3/Peer assignment/GettingCleaningData")
+
 ### Load and Merge the test and training sets
 #### Load the training set of measurements
 training_set = read.table('./UCI HAR Dataset/train/X_train.txt')
@@ -90,4 +91,4 @@ library(reshape2)
 meltedMergedSet = melt(mergedSetMeanStd, id.vars = c('activity', 'subjectId'))
 tidyMeans <- dcast(meltedMergedSet, activity + subjectId ~ variable, mean)
 
-write.csv(tidyMeans, file = 'TidyData.csv')
+write.table(tidyMeans, file = 'TidyData.txt', row.names = FALSE)
